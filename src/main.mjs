@@ -28,7 +28,6 @@ let save = data => {
     if(ans.confirm) {
       request.save(data)
         .then(orderNo => {
-            success = true
             console.log('恭喜！抢号成功！订单号：' + orderNo + '。请在微信公众号京医通-个人中心-我的账户-挂号订单中继续支付。')
         }).catch(error => {
           console.log('没挂上!', error)
