@@ -1,0 +1,25 @@
+{
+  "name": "jyt-boot",
+  "version": "1.0.0",
+  "description": "A jyt boot",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/liyue-private/jyt-boot.git"
+  },
+  "author": "LiYue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/liyue-private/jyt-boot/issues"
+  },
+  "homepage": "https://gitlab.com/liyue-private/jyt-boot#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "eslint": "^5.14.1",
+    "inquirer": "^6.2.2",
+    "lodash": "^4.17.11"
+  }
+}

@@ -1,0 +1,11 @@
+.DS_Store
+.*
+!.gitignore
+!.eslintrc.*
+!.babelrc
+!.editorconfig
+!.npmignore
+/node_modules
+/dist
+/bower_components
+npm-debug.log
