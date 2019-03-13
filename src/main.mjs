@@ -16,7 +16,7 @@ import ajax from './utils/ajax';
 import config from '../config/config'
 import inquirer from 'inquirer'
 import request from './requests'
-
+import dt from './utils/date'
 
 let save = data => {
   inquirer.prompt([{
@@ -101,13 +101,18 @@ inquirer.prompt([
             name: 'date',
             message: '选择日期:',
             paginated: true,
-            choices: dateList.map(date => ({name: date.date + ': ' + date.status, value: date.date}))      
+            choices: dateList.map(date => ({name: date.date + ': ' + date.status, value: date}))      
           }
 ]))
 .then(ansDate => {
-          data.treatmentDay = ansDate.date
-          console.log('选择了日期:', ansDate.date)
-          return request.getProductDetail(data.hosCode, data.firstDeptCode, data.secondDeptCode, data.treatmentDay)
+          data.treatmentDay = ansDate.date.date
+          console.log('选择了日期:', ansDate.date.date)
+          // 明天放号的日期是查不到科室的，用上周的日期替代查询
+          let requestDate = ansDate.date.date
+          if('TOMORROW_OPEN' == ansDate.date.status) {
+            requestDate = dt.getLastWeekDay(ansDate.date.date)
+          }
+          return request.getProductDetail(data.hosCode, data.firstDeptCode, data.secondDeptCode, requestDate)
 })
 .then(productList => inquirer.prompt([
               {
